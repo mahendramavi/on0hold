@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shree Mahendra Secondary School - Coming Soon</title>
+  <style>
+    :root {
+      --crimson: #DC143C;
+      --dark-crimson: #8B0000;
+      --navy: #000080;
+      --gold: #FFD700;
+      --cream: #FFFDD0;
+      --maroon: #4A0E17;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--maroon);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Nepali Traditional Geometric Border (Dhaka/Mandala Motif Framing) */
+    .border-frame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 12px solid var(--crimson);
+      outline: 4px solid var(--gold);
+      outline-offset: -8px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .corner-pattern {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--gold);
+      background-color: var(--navy);
+      z-index: 11;
+    }
+    .top-left { top: 0; left: 0; }
+    .top-right { top: 0; right: 0; }
+    .bottom-left { bottom: 0; left: 0; }
+    .bottom-right { bottom: 0; right: 0; }
+
+    /* Main Container */
+    .container {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+      margin: auto;
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 1;
+    }
+
+    /* Traditional Crest Decorative Icon */
+    .mandala-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px auto;
+      fill: var(--crimson);
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--dark-crimson);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .location {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 15px;
+    }
+
+    .slogan {
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--maroon);
+      margin-bottom: 30px;
+    }
+
+    /* Interactive Elements */
+    .launch-tag {
+      display: inline-block;
+      background-color: var(--navy);
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 25px;
+      border: 1px solid var(--gold);
+    }
+
+    .contact-card {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-facebook {
+      background-color: #1877F2;
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-facebook:hover {
+      background-color: #0d65d9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(24, 119, 242, 0.3);
+    }
+
+    .btn-phone {
+      background-color: var(--crimson);
+      color: #ffffff;
+      border: 1px solid var(--gold);
+    }
+
+    .btn-phone:hover {
+      background-color: var(--dark-crimson);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(220, 20, 60, 0.3);
+    }
+
+    /* Interactive Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: var(--cream);
+      padding: 30px;
+      border-radius: 8px;
+      border: 3px solid var(--gold);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--maroon);
+    }
+
+    footer {
+      font-size: 0.85rem;
+      color: #666;
+      z-index: 1;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .location { font-size: 1.1rem; }
+      .slogan { font-size: 1rem; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="border-frame">
+    <div class="corner-pattern top-left"></div>
+    <div class="corner-pattern top-right"></div>
+    <div class="corner-pattern bottom-left"></div>
+    <div class="corner-pattern bottom-right"></div>
+  </div>
+
+  <div class="container">
+    <!-- Traditional Brass Lotus / Mandala SVG Silhouette -->
+    <svg class="mandala-icon" viewBox="0 0 24 24">
+      <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6E10,6 10,18 12,18E14,18 14,6 12,6Z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+
+    <h1>Shree Mahendra Secondary School</h1>
+    <div class="location">Biratnagar - 8</div>
+    <div class="slogan">"where excellence meets perfection"</div>
+
+    <div class="launch-tag">Official Portal Launching Soon</div>
+
+    <div class="contact-card">
+      <a href="https://www.facebook.com/p/Shree-Mahendra-Secondary-School-Biratnagar-8-Morang-100089359447905/" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn btn-facebook">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Visit Facebook Page
+      </a>
+
+      <button class="btn btn-phone" onclick="openModal()">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call Us
+      </button>
+    </div>
+  </div>
+
+  <!-- Interactive Call Modal -->
+  <div class="modal" id="phoneModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 style="color: var(--dark-crimson); margin-bottom: 10px;">Official Contact</h3>
+      <p style="margin-bottom: 15px;">Shree Mahendra Secondary School</p>
+      <a href="tel:9852070488" style="font-size: 1.4rem; font-weight: bold; color: var(--navy); text-decoration: none; display: block; margin-bottom: 15px;">
+        9852070488
+      </a>
+      <p style="font-size: 0.85rem; color: #555;">Click the number above to place a direct call.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Shree Mahendra Secondary School, Biratnagar - 8. All Rights Reserved.
+  </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById('phoneModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('phoneModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById('phoneModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
